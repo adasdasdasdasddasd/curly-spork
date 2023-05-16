@@ -50,8 +50,8 @@ def crawl_3(topicID):
         
 我们将爬取讨论，精华，等待回答三个页签的代码，分别放到 crawl_1，crawl_2，crawl_3 这 3 个函数中。
 然后在主函数中启动 3 条线程，每条线程执行一个爬虫函数。
-python复制代码def main():
-
+python复制代码
+def main():
     topicID = '20192351'
     try:
         t1 = threading.Thread(target=crawl_1, args=(topicID,))
