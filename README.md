@@ -2,15 +2,19 @@
 利用爬虫对知乎话题进行爬取，将页面的问题的问题爬取下来，存取到数据库。
 使用多线程的方式来进行爬取，提高爬取效率。
 打开知乎网页，按F12打开开发者工具，切换到 Network，过滤器选择 XHR。
+
 ![image](https://github.com/adasdasdasdasddasd/curly-spork/blob/main/%E6%8D%95%E8%8E%B7.PNG)
+
 图中圈起来的地方是话题的 ID，如果后续大家想爬其他话题的话，只需要更改这个参数即可。
 数据量较大，并且需要数据去重，所以为了省事儿，我决定使用 mysql 数据库来进行数据存储。
 首先要安装 mysql 数据库，和 pymysql 库。
 在 MySQL 数据库中创建数据库 zhuhuTopic 和数据表 questions，下面是我创建的表的结构。
+
 ![image](https://github.com/adasdasdasdasddasd/curly-spork/blob/main/3.PNG)
+
+
 链接数据库：
 import pymysql
-
 db = pymysql.connect(host='xxx.xxx.xxx.xxx', port=3306, user='zhihuTopic', passwd='xxxxxx', db='zhihuTopic', charset='utf8')
 cursor = db.cursor()
 增删改查通过pymysql库操作数据库，实际上也是通过执行SQL语句。也就是说，自行构造 SQL 语句的字符串 sql，然后通过 *cursor.excute(sql) *执行。
@@ -82,4 +86,5 @@ def saveQuestionDB(id, title, url):
 在数据库操作之前 *lock.acquire() *上锁，操作完成之后，*lock.release() *解锁。
 
 最后爬取结果如图所示，存储在数据库中：
+
 ![image](https://github.com/adasdasdasdasddasd/curly-spork/blob/main/2.PNG)
