@@ -1,4 +1,5 @@
 import execjs
+
 import requests
 
 news_est_url = "https://max.pedata.cn/api/q4x/newsflash/list"
