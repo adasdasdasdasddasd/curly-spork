@@ -132,7 +132,7 @@ def get_data(key_iv_appid):
         key_iv_appid["des_key_1"], key_iv_appid["des_iv_1"]
     )
     print(json.loads(decrypted_data))
-#
+
 if __name__ == '__main__':
     # get_encrypted_js_url()
     result = get_data(get_key_iv_appid(get_decrypted_js(get_encrypted_js_url())))
