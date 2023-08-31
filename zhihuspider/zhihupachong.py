@@ -4,8 +4,7 @@ import pymysql
 import threading
 
 lock = threading.Lock()
-db = pymysql.connect(host='localhost', port=3306, user='root', passwd='123456', db='zhuhuTopic',
-                     charset='utf8')
+db = pymysql.connect(host='localhost', port=3306, user='root', passwd='123456', db='zhuhuTopic',charset='utf8')
 cursor = db.cursor()
 
 
