@@ -34,6 +34,7 @@ def get_complete_cookie():
         acw_sc_v2_js = f.read()
     acw_sc__v2 = execjs.compile(acw_sc_v2_js).call('getcookie_v2', arg1)
     complete_cookie.update({"acw_sc__v2": acw_sc__v2})
+
     # 第二次访问首页，获取其他 cookies
     response2 = requests.get(url=index_url, headers=headers, cookies=complete_cookie)
     complete_cookie.update(response2.cookies.get_dict())
